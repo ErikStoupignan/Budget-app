@@ -9,6 +9,7 @@ AllCops:
     - "node_modules/**/*"
     - "spec/**"
     - "app/models/ability"
+    - "app/controllers/helpers"
 
   DisplayCopNames: true
 
