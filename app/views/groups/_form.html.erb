@@ -12,14 +12,16 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, style: "" %>
+    <%= form.text_field :name, placeholder: :name %>
   </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+  <div class="field">
+    <%= form.label :icon, style: "" %>
+    <%= form.text_field :icon, placeholder: :icon %>
   </div>
+
+
 
   <div>
     <%= form.submit %>
