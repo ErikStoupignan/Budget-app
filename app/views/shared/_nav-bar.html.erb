@@ -4,18 +4,26 @@
 
 
     <div class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon">    </span>
     </div>
 
     <div class="navbar-toggler nav-item">
-      <h3 class='text-white'>Transaction</h3>
-    </div>
+      <% if @user_page %>
+        <h3 class='text-white'>Index</h3>
 
-    <div class="collapse navbar-collapse" id="navbarsearch">
-     <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <% elsif @group_page %>
+        <h3 class='text-white'>Categories</h3>
+
+      <% elsif @group_show_page %>
+        <h3 class='text-white'>Details</h3>
+
+      <% elsif @movement_page %>
+        <h3 class='text-white'>Movements</h3>
+
+      <% else %>
+        <h3 class='text-white'>Welcome</h3>
+      
+      <% end %>
     </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsearch" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,5 +78,12 @@
       </div>
 
     <% end %>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarsearch">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
   </div>
 </nav>

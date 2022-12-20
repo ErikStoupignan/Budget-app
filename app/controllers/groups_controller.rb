@@ -4,10 +4,12 @@ class GroupsController < ApplicationController
   # GET /groups or /groups.json
   def index
     @groups = Group.all
+    @group_page = true
   end
 
   # GET /groups/1 or /groups/1.json
   def show
+    @group_show_page = true
   end
 
   # GET /groups/new
