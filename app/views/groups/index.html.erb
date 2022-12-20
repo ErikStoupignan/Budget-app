@@ -5,7 +5,7 @@
 <div id="groups">
   <% @groups.each do |group| %>
 
-    <div>
+    <div class='d-flex justify-content-center'>
       <%= link_to group do %>
         <%= render group %>
       <% end %>
@@ -15,4 +15,6 @@
   <% end %>
 </div>
 
-<%= link_to "New category", new_group_path %>
+<div class='btn btn-success text-white badge mx-2'>
+  <%= link_to "New category", new_group_path, class: 'link-light' %>
+</div>
