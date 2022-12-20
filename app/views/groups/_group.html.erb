@@ -1,12 +1,13 @@
-<div id="<%= dom_id group %>">
-  <p>
-    <strong>Name:</strong>
-    <%= group.name %>
-  </p>
+<section id="<%= dom_id group %>">
+  
+  <article class='row '>
 
-  <p>
-    <strong>User:</strong>
-    <%= group.user.name %>
-  </p>
+    <div class='col-3 d-flex justify-content-center'>
+      <img src='<%= group.icon %>' alt = '[Logo for <%= group.name %>]' style='width: 70%; max-height: 50px;' class=''>
+    </div>
 
-</div>
+    <span class='col d-flex align-items-center'><h2><%= group.name %></h2></span>
+
+  </article>
+
+</section>
