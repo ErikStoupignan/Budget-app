@@ -11,5 +11,4 @@ Rails.application.routes.draw do
   resources :groups
   resources :movements
   resources :users
-
 end

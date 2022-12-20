@@ -1,7 +1,8 @@
 <div class="">
 
-  <h2 class="">Welcome, <%= current_user.name %></h2>
-  <p class="">You are signed in.</p>
-  <%= button_to 'Go to categories', groups_path, method: :get, class: '' %>
+  <h2 class="">Welcome</h2>
+
+  <button class=""><%= link_to 'LOG IN', new_user_session_path, class: '' %></button>
+  <button class=""><%= link_to 'SIGN UP', new_user_registration_path, class: '' %></button>
 
 </div>
