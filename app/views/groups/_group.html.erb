@@ -6,11 +6,17 @@
       <h1><%= group.icon %></h1>
     </div>
 
-    <span class='col d-flex align-items-center'>
+    <div class='col d-flex align-items-center'>
       <h2>
         <%= group.name %>
       </h2>
-    </span>
+    </div>
+
+    <h2 class='col d-flex align-items-center'>
+      <% total = 0.00 %>
+      <% group.group_movements.each {|group_movement| total += group_movement.movement.amount} %>
+      <span class="amount">$<%= total %></span>
+    </div>
 
   </article>
 

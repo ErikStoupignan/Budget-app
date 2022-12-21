@@ -3,16 +3,32 @@
 <%# <h1>Categories</h1> %>
 
 <div id="groups">
+
+<% if @groups.empty? %>
+  <div class='d-flex flex-column justify-content-center px-2 gap-3 container-lg'>
+    <h2 class="">There are not categories yet!</h2>
+    <p class="">Create your first category by clicking on the button below.</p>
+  </div>
+<% else %>
+
   <% @groups.each do |group| %>
 
-    <div class='d-flex justify-content-center'>
-      <%= link_to group do %>
-        <%= render group %>
-      <% end %>
-    </div>
-    <br />
+    <% if can? :manage, group %>
+
+      <div class='d-flex justify-content-center'>
+        <%= link_to group do %>
+          
+          <%= render group %>
+          
+        <% end %>
+      </div>
+      <br />
+
+    <% end %>
 
   <% end %>
+
+<% end %>
 </div>
 
 <div class='btn btn-success text-white badge mx-2'>

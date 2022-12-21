@@ -2,9 +2,19 @@
 
 <%= render @group %>
 
-<div>
-  <%= link_to "Edit this group", edit_group_path(@group) %> |
-  <%= link_to "Back to groups", groups_path %>
+<br />
 
-  <%= button_to "Destroy this group", @group, method: :delete %>
+<div class='px-2'>
+  
+  <%= render 'group-movement' %>
+
+</div>
+
+<div class='btn btn-success text-white badge mx-2'>
+  <%= link_to 'New Transaction', new_movement_path, method: :get, class: 'link-light' %>
+</div>
+
+<div class='border d-flex justify-content-center gap-3'>
+  <%= link_to "Edit this group", edit_group_path(@group) %> |
+  <%= link_to "Delete this category", @group, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </div>

@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[ show edit update destroy ]
+  load_and_authorize_resource
 
   # GET /groups or /groups.json
   def index
@@ -9,6 +10,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1 or /groups/1.json
   def show
+    @group_movements = GroupMovement.includes(:group, :movement).where(group_id: params[:id]).order(created_at: :desc)
     @group_show_page = true
   end
 

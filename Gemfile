@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.3'
 
+# Simple authorization solution for Rails. All permissions are stored in a single location.
+gem 'cancancan'
+
 # This gem control the registrion and logins for the users
 gem 'devise'
 

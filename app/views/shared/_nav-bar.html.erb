@@ -2,10 +2,13 @@
 
   <div class="container-fluid">
 
-
-    <div class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">    </span>
-    </div>
+    <% if @group_show_page %>
+      <h1><%= link_to "◁", groups_path, class:'link-light px-3' %></h1>
+    <% else %>
+      <div class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">    </span>
+      </div>
+    <% end %>
 
     <div class="navbar-toggler nav-item">
       <% if @user_page %>
