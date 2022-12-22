@@ -1,5 +1,6 @@
 class MovementsController < ApplicationController
   before_action :set_movement, only: %i[ show edit update destroy ]
+  before_action :set_group, only: %i[index show new edit update create destroy]
   load_and_authorize_resource
 
   # GET /movements or /movements.json
@@ -15,6 +16,7 @@ class MovementsController < ApplicationController
   # GET /movements/new
   def new
     @movement = Movement.new
+    @movement.group_ids << @group.id
   end
 
   # GET /movements/1/edit
@@ -24,13 +26,13 @@ class MovementsController < ApplicationController
   # POST /movements or /movements.json
   def create
     @movement = Movement.new(movement_params)
-    @movement.user_id = current_user.id
-
-    @group_movement = @movement.group_movements.create(movement_params)
+    # @movement = current_user.movements.new(group_movement_params)
+    # @movement.user_id = current_user.id
+    # @group_movement = @movement.group_movements.create(movement_params)
 
     respond_to do |format|
       if @movement.save
-        format.html { redirect_to group_path(@group_movement.group_id), notice: "Movement was successfully created." }
+        format.html { redirect_to group_url(@group), notice: "Movement was successfully created." }
         format.json { render :show, status: :created, location: @movement }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +45,7 @@ class MovementsController < ApplicationController
   def update
     respond_to do |format|
       if @movement.update(movement_params)
-        format.html { redirect_to movement_url(@movement), notice: "Movement was successfully updated." }
+        format.html { redirect_to group_url(@group), notice: "Movement was successfully updated." }
         format.json { render :show, status: :ok, location: @movement }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -68,8 +70,13 @@ class MovementsController < ApplicationController
       @movement = Movement.find(params[:id])
     end
 
+    def set_group
+      @group = Group.find(params[:group_id])
+    end
+
     # Only allow a list of trusted parameters through.
     def movement_params
-      params.require(:movement).permit(:name, :user_id, :amount, :group_id)
+      # params.require(:movement).permit(:name, :amount)
+      params.require(:movement).permit(:name, :amount, group_ids: []).with_defaults(user_id: current_user.id)
     end
 end

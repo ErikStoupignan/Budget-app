@@ -5,8 +5,14 @@
   </p>
 
   <p>
-    <strong>User:</strong>
-    <%= movement.user_id %>
+    <strong>Amount:</strong>
+    <%= movement.amount %>
+  </p>
+
+    <p>
+    <strong>Date:</strong>
+    <%= movement.created_at.strftime("%e %b %y") %>
+
   </p>
 
 </div>

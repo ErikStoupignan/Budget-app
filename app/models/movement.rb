@@ -1,7 +1,7 @@
 class Movement < ApplicationRecord
   belongs_to :user
-  has_many :group_movements
+  has_and_belongs_to_many :groups
 
-  validates :name, presence: true, allow_blank: false
-  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :name, :amount, presence: true
+  validates_presence_of :groups
 end

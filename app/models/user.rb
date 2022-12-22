@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, allow_blank: false
+  has_many :groups
+  has_many :movements
 
-  has_many :groups, foreign_key: 'icon'
-  has_many :movements, foreign_key: 'author_id'
+  validates :name, presence: true, allow_blank: false
 end

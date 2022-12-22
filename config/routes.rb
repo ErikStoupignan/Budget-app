@@ -8,8 +8,12 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :group_movements
-  resources :groups
-  resources :movements
+  # resources :group_movements
+  # resources :groups
+  # resources :movements
   resources :users
+
+  resources :groups do
+    resources :movements
+  end
 end

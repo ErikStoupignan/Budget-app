@@ -10,7 +10,6 @@ class GroupsController < ApplicationController
 
   # GET /groups/1 or /groups/1.json
   def show
-    @group_movements = GroupMovement.includes(:group, :movement).where(group_id: params[:id]).order(created_at: :desc)
     @group_show_page = true
   end
 
@@ -20,13 +19,12 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
-    @group.user_id = current_user.id
+    # @group.user_id = current_user.id
 
     respond_to do |format|
       if @group.save
@@ -70,6 +68,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:name, :user_id, :icon)
+      params.require(:group).permit(:name, :icon).with_defaults(user_id: current_user.id)
     end
 end

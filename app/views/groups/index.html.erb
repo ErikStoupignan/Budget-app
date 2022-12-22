@@ -1,17 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<%# <h1>Categories</h1> %>
-
 <div id="groups">
 
 <% if @groups.empty? %>
+
   <div class='d-flex flex-column justify-content-center px-2 gap-3 container-lg'>
     <h2 class="">There are not categories yet!</h2>
     <p class="">Create your first category by clicking on the button below.</p>
   </div>
 <% else %>
 
-  <% @groups.each do |group| %>
+  <% @groups.includes([:user]).order('created_at DESC').each do |group| %>
 
     <% if can? :manage, group %>
 

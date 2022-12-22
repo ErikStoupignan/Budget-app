@@ -1,9 +1,11 @@
 class GroupMovementsController < ApplicationController
   before_action :set_group_movement, only: %i[ show edit update destroy ]
+  before_action :set_group, only: %i[index show new edit update create destroy]
+  load_and_authorize_resource
 
   # GET /group_movements or /group_movements.json
   def index
-    @group_movements = GroupMovement.all
+    @group_movements = @group.movements
   end
 
   # GET /group_movements/1 or /group_movements/1.json
@@ -13,6 +15,7 @@ class GroupMovementsController < ApplicationController
   # GET /group_movements/new
   def new
     @group_movement = GroupMovement.new
+    @group_movement.group_ids << @group.id
   end
 
   # GET /group_movements/1/edit
@@ -63,8 +66,12 @@ class GroupMovementsController < ApplicationController
       @group_movement = GroupMovement.find(params[:id])
     end
 
+    def set_group
+      @group = Group.find(params[:group_id])
+    end
+
     # Only allow a list of trusted parameters through.
     def group_movement_params
-      params.require(:group_movement).permit(:group_id, :movement_id)
+      params.require(:group_movement).permit(:name, :amount, group_ids: []).with_defaults(user_id: current_user.id)
     end
 end

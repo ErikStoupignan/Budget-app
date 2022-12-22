@@ -1,10 +1,12 @@
-<%= form_with(model: group_movement) do |form| %>
+<%# <%= form_with model: @movement do |form| %>
+<%= form_with(model: group_movement, url: [@group, group_movement]) do |form| %>
+
   <% if group_movement.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(group_movement.errors.count, "error") %> prohibited this group_movement from being saved:</h2>
+      <h2><%= pluralize(movement.errors.count, "error") %> prohibited this movement from being saved:</h2>
 
       <ul>
-        <% group_movement.errors.each do |error| %>
+        <% movement.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -12,16 +14,23 @@
   <% end %>
 
   <div>
-    <%= form.label :group_id, style: "display: block" %>
-    <%= form.text_field :group_id %>
+    <%= form.label :name, style: "" %>
+    <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :movement_id, style: "display: block" %>
-    <%= form.text_field :movement_id %>
+    <%= form.label :amount, style: "" %>
+    <%= form.text_field :amount %>
   </div>
 
+  <%= form.collection_check_boxes :group_ids, Group.where(user_id: current_user.id), :id, :name do |element| %>
+
+    <%= element.check_box + element.text %>
+    
+  <% end %>
+  
+
   <div>
-    <%= form.submit %>
+    <%= form.submit 'Create transaction' %>
   </div>
 <% end %>

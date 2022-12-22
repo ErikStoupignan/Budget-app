@@ -13,7 +13,9 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) { |element| element.permit(:name, :email, :password) }
+    default_parameters = %i[name role]
+    devise_parameter_sanitizer.permit(:sign_up, keys: default_parameters)
+    devise_parameter_sanitizer.permit(:sign_in, keys: default_parameters)
     devise_parameter_sanitizer.permit(:account_update) { |element| element.permit(:name, :email, :password, :current_password) }
   end
 end
