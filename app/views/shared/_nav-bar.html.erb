@@ -2,15 +2,15 @@
 
   <div class="container-fluid">
 
-    <% if @group_show_page %>
-      <h1><%= link_to "◁", groups_path, class:'link-light px-3' %></h1>
+    <% if @group_show_page || current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
+      <h1><%= link_to "◁", :back, class:'link-light' %></h1>
     <% else %>
       <div class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">    </span>
       </div>
     <% end %>
 
-    <div class="navbar-toggler nav-item">
+    <div class="nav-item d-flex align-items-md-center">
       <% if @user_page %>
         <h3 class='text-white'>Index</h3>
 
@@ -24,16 +24,23 @@
         <h3 class='text-white'>Movements</h3>
 
       <% else %>
-        <h3 class='text-white'>Welcome</h3>
+
+        <% if current_page?(new_user_registration_path) %>
+          <h3 class='text-white'>REGISTER</h3>
+
+        <% elsif current_page?(new_user_session_path) %>
+          <h3 class='text-white'>LOGIN</h3>
+
+       <% end %>
       
       <% end %>
     </div>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsearch" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-      </svg>
-    </button>
+    <% if current_page?(new_user_session_path) %>
+      <%= link_to 'Log in', new_user_session_path, class: 'link-light' %>
+    <% elsif current_page?(new_user_registration_path) %>
+      <%= link_to 'Next', new_user_session_path, class: 'link-light' %>
+    <% end %>
 
     <% if user_signed_in? %>
 

@@ -1,11 +1,17 @@
-<div class="">
+<section class="container-fluid" style=''>
 
-  <h2 class="">Welcome</h2>
+  <p class="position-absolute top-50 start-50 translate-middle pb-5 splash text-center">Welcome to my Budget app</p>
+ 
+</section>
 
-  <button class=""><%= link_to 'Log In', new_user_session_path, class: '' %></button>
-  <button class=""><%= link_to 'Sign Up', new_user_registration_path, class: '' %></button>
+<div class=' container-fluid border d-flex flex-column gap-3 position-absolute bottom-0 start-50 translate-middle-x mb-4'>
 
+  <button class="btn btn-primary">
+    <strong><%= link_to 'LOG IN', new_user_session_path, class: 'link-light' %></strong>
+  </button>
 
+  <div class="d-flex justify-content-center align-items-md-center">
+    <strong><%= link_to 'SIGN UP', new_user_registration_path, class: '' %></strong>
+  </div>
 
-  
 </div>

@@ -12,9 +12,10 @@
   </head>
 
   <body>
-
-    <%= render 'shared/nav-bar' %>
-
+    <% if user_signed_in? || current_page?(new_user_registration_path) || current_page?(new_user_session_path)%>
+      <%= render 'shared/nav-bar' %>
+    <% end %>
+    
     <%= yield %>
 
     <p class="notice"><%= notice %></p>
