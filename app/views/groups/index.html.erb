@@ -8,21 +8,18 @@
     <h2 class="">There are not categories yet!</h2>
     <p class="">Create your first category by clicking on the button below.</p>
   </div>
+
 <% else %>
 
   <% @groups.includes([:user]).order('created_at DESC').each do |group| %>
 
     <% if can? :manage, group %>
-
       <div class='d-flex justify-content-center'>
         <%= link_to group do %>
-          
           <%= render group %>
-          
         <% end %>
       </div>
       <br />
-
     <% end %>
 
   <% end %>
