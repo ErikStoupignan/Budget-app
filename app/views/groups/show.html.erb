@@ -9,14 +9,19 @@
   <%= link_to "Delete this category", @group, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </div>
 
-<div class='px-2'>
+<div class='px-2 '>
 
-<% @group.movements.each do |movement|%>
-  <%= render movement %>
-  <p>
-    <%= link_to "Show this movement", group_movement_path(@group,movement) %>
-  </p>
-<% end %>
+  <% @group.movements.each do |movement| %>
+
+    <%= link_to group_movement_path(@group,movement) do %>
+
+      <div class='link-dark'>
+        <%= render movement %>
+      </div>
+      
+    <% end%>
+    <%# <%= link_to "Show this movement", group_movement_path(@group,movement) %>
+  <% end %>
 
 </div>
 

@@ -11,6 +11,7 @@ class MovementsController < ApplicationController
 
   # GET /movements/1 or /movements/1.json
   def show
+    @details_movement_page = true
   end
 
   # GET /movements/new
