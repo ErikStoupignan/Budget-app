@@ -20,7 +20,7 @@
 }
 
 body {
-  background-color: rgba(216, 216, 216, 0.63) !important;
+  background-color: rgba(172, 170, 170, 0.63) !important;
 }
 
 @font-face {
@@ -66,6 +66,10 @@ a {
   background-color: #51b523;
  }
 
+ .red_template {
+  background-color: red;
+ }
+
  .font_size_logo_groups {
   font-size: 50px;
   background-color:  rgba(201, 200, 200, 0.639);
@@ -90,4 +94,9 @@ a {
   border: 1px solid rgba(206, 206, 206, 0.564);
   background-color: white;
   color: rgba(50, 50, 50, 0.639);
+  font-size: 25px !important;
  }
+ 
+.small_font_size {
+  font-size: 16px;
+}

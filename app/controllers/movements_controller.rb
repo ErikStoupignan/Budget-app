@@ -60,7 +60,7 @@ class MovementsController < ApplicationController
     @movement.destroy
 
     respond_to do |format|
-      format.html { redirect_to movements_url, notice: "Movement was successfully destroyed." }
+      format.html { redirect_to @group, notice: "Movement was successfully destroyed." }
       format.json { head :no_content }
     end
   end

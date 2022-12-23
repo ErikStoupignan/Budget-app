@@ -1,18 +1,25 @@
-<div id="<%= dom_id movement %>">
-  <p>
-    <strong>Name:</strong>
-    <%= movement.name %>
-  </p>
+<div id="<%= dom_id movement %>" class='mb-2 bg-white px-2'>
 
-  <p>
-    <strong>Amount:</strong>
-    <%= movement.amount %>
-  </p>
+  <div class='d-flex justify-content-between'>
 
-    <p>
-    <strong>Date:</strong>
-    <%= movement.created_at.strftime("%e %b %y") %>
+    <span>
+      <strong>Name:</strong><%= movement.name %>
+    </span>
 
-  </p>
+    <span>
+      <strong>Amount:</strong> $<%= movement.amount %>
+    </span>
+
+  </div>
+
+  <span>
+    <strong>Transaction:</strong> N° <%= movement.id %>
+  </span>
+
+  <br />
+
+  <span>
+    <strong>Date: </strong><%= movement.created_at.strftime("%c") %>
+  </span>
 
 </div>
