@@ -1,4 +1,4 @@
-class GroupMovementsController < ApplicationController
+class GroupsMovementsController < ApplicationController
   before_action :set_group_movement, only: %i[show edit update destroy]
   before_action :set_group, only: %i[index show new edit update create destroy]
   load_and_authorize_resource
