@@ -1,1 +1,1 @@
-json.partial! "group_movements/group_movement", group_movement: @group_movement
+json.partial! 'group_movements/group_movement', group_movement: @group_movement

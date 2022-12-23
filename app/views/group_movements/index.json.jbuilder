@@ -1,1 +1,1 @@
-json.array! @group_movements, partial: "group_movements/group_movement", as: :group_movement
+json.array! @group_movements, partial: 'group_movements/group_movement', as: :group_movement
