@@ -11,7 +11,7 @@
 
 <div class='px-2 '>
 
-  <% @group.movements.each do |movement| %>
+  <% @group.movements.order('created_at DESC').each do |movement| %>
 
     <%= link_to group_movement_path(@group,movement) do %>
 
