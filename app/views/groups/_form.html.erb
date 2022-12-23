@@ -1,4 +1,5 @@
 <%= form_with(model: group) do |form| %>
+
   <% if group.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -11,17 +12,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "" %>
-    <%= form.text_field :name, placeholder: :name %>
+  <div class='devise_login_register'>
+    <%= form.text_field :name, placeholder: 'Category name', autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :icon, style: "" %>
-    <%= form.select :icon, [['🎲'], ['🚘'], ['🛒'], ['🍕'], ['📚'], ['🎞️'], ['🎶'], ['🍎'], ['👾'], ['✍🏽'], ['🏃🏽'], ['❤️'], ['⭐'], ['🐶'], ['🌳'], ['🌎'], ['🌙'], ['💧'], ['☀️'], ['🌹'], ['🏈'], ['🥊'], ['✈️'], ['🏕️'], ['🚲'], ['🔨'], ['📆'], ['📎'], ['🔒'], ['📌'], ['✂️'], ['🕙'], ['🧹']] %>
+  <div class="checkbox_groups">
+    <%= form.label 'Select an Icon:', class:'col', style: "" %>
+    <%= form.select :icon, [['🎲'], ['🚘'], ['🛒'], ['🍕'], ['📚'], ['🎞️'], ['🎶'], ['🍎'], ['👾'], ['✍🏽'], ['🏃🏽'], ['❤️'], ['⭐'], ['🐶'], ['🌳'], ['🌎'], ['🌙'], ['💧'], ['☀️'], ['🌹'], ['🏈'], ['🥊'], ['✈️'], ['🏕️'], ['🚲'], ['🔨'], ['📆'], ['📎'], ['🔒'], ['📌'], ['✂️'], ['🕙'], ['🧹']], class:'' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class='position-relative container-fluid green_template text-white badge position-absolute bottom-0 start-50 translate-middle-x' style='height: 15%;'>
+    <%= form.submit 'Create category', class: 'button_submit_form font_size_link_new link-light border position-absolute top-50 start-50 translate-middle py-4', style:'width: 90%;' %>
   </div>
+
 <% end %>

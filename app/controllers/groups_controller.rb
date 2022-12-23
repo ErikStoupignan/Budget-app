@@ -16,10 +16,13 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
+    @new_group_page = true
   end
 
   # GET /groups/1/edit
-  def edit; end
+  def edit
+    @edit_group_page = true
+  end
 
   # POST /groups or /groups.json
   def create

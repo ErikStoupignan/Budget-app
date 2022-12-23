@@ -1,32 +1,33 @@
 <p style="color: green"><%= notice %></p>
 
-<div id="groups">
+<div id="groups" class='container_groups'>
 
-<% if @groups.empty? %>
+  <% if @groups.empty? %>
 
-  <div class='d-flex flex-column justify-content-center px-2 gap-3 container-lg'>
-    <h2 class="">There are not categories yet!</h2>
-    <p class="">Create your first category by clicking on the button below.</p>
-  </div>
+    <div class='d-flex flex-column justify-content-center px-2 gap-3 container-lg'>
+      <h2 class="">There are not categories yet!</h2>
+      <p class="">Create your first category by clicking on the button below.</p>
+    </div>
 
-<% else %>
+  <% else %>
 
-  <% @groups.includes([:user]).order('created_at DESC').each do |group| %>
+    <% @groups.includes([:user]).order('created_at DESC').each do |group| %>
 
-    <% if can? :manage, group %>
-      <div class='d-flex justify-content-center'>
-        <%= link_to group do %>
-          <%= render group %>
-        <% end %>
-      </div>
-      <br />
+      <% if can? :manage, group %>
+
+        <div class='groups_list_links m-2 py-1 bg-white' style='height: 15vh;'>
+          <%= link_to group, class:'link-secondary' do %>
+            <%= render group %>
+          <% end %>
+        </div>
+
+      <% end %>
+
     <% end %>
 
   <% end %>
-
-<% end %>
 </div>
 
-<div class='btn btn-success text-white badge mx-2'>
-  <%= link_to "New category", new_group_path, class: 'link-light' %>
+<div class='position-relative container-fluid green_template text-white badge position-absolute bottom-0 start-50 translate-middle-x' style='height: 15%;'>
+  <%= link_to "New category", new_group_path, class: 'font_size_link_new link-light border position-absolute top-50 start-50 translate-middle py-4', style:'width: 90%;' %>
 </div>

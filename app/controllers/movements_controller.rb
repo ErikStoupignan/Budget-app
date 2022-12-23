@@ -17,6 +17,7 @@ class MovementsController < ApplicationController
   def new
     @movement = Movement.new
     @movement.group_ids << @group.id
+    @new_transaction_page = true
   end
 
   # GET /movements/1/edit

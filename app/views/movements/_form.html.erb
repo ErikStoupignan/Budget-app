@@ -1,4 +1,3 @@
-<%# <%= form_with model: @movement do |form| %>
 <%= form_with(model: movement, url: [@group, movement]) do |form| %>
 
   <% if movement.errors.any? %>
@@ -13,22 +12,31 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "" %>
-    <%= form.text_field :name %>
+  <div class='devise_login_register'>
+    <%= form.text_field :name, placeholder: 'Name' %>
   </div>
 
-  <div>
-    <%= form.label :amount, style: "" %>
-    <%= form.text_field :amount %>
+  <div class='devise_login_register'>
+    <%= form.text_field :amount, placeholder: 'Amount' %>
   </div>
 
-  <%= form.collection_check_boxes :group_ids, Group.where(user_id: current_user.id), :id, :name do |element| %>
-    <%= element.check_box + element.text %>
-  <% end %>
+  <div class=''>
+    <%= form.collection_check_boxes :group_ids, Group.where(user_id: current_user.id), :id, :name do |element| %>
+      <%= element.check_box + element.text %>
+    <% end %>
+  </div>
   
+  <%# <div class='button_submit_transaction button_submit_form position-relative font_size_link_new container-fluid green_template text-white position-absolute bottom-0 start-50 translate-middle-x' style='height: 15%;'> %>
 
-  <div>
-    <%= form.submit 'Create transaction' %>
+    <%# <div class='button_submit_transaction button_submit_form font_size_link_new'> %>
+      <%# <%= form.submit 'Create transaction' %>
+    <%# </div> %>
+
+  <%# </div> %>
+
+  <div class='position-relative container-fluid green_template text-white badge position-absolute bottom-0 start-50 translate-middle-x' style='height: 15%;'>
+    <%= form.submit 'Create transaction', class:'button_submit_form font_size_link_new link-light border position-absolute top-50 start-50 translate-middle py-4', style:'width: 90%;' %>
   </div>
+
+
 <% end %>

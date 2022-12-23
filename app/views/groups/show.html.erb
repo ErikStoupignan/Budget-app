@@ -12,11 +12,11 @@
 
 </div>
 
-<div class='btn btn-success text-white badge mx-2'>
-  <%= link_to 'New Transaction', new_group_movement_path(@group), class: 'link-light' %>
+<div class='position-relative container-fluid green_template text-white badge position-absolute bottom-0 start-50 translate-middle-x' style='height: 15%;'>
+  <%= link_to 'New Transaction', new_group_movement_path(@group), class: 'font_size_link_new link-light border position-absolute top-50 start-50 translate-middle py-4', style:'width: 90%;' %>
 </div>
 
-<div class='border d-flex justify-content-center gap-3'>
+<div class='border border-danger d-flex justify-content-center gap-3'>
   <%= link_to "Edit this group", edit_group_path(@group) %> |
   <%= link_to "Delete this category", @group, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </div>
