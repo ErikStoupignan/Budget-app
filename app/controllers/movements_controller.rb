@@ -27,9 +27,6 @@ class MovementsController < ApplicationController
   # POST /movements or /movements.json
   def create
     @movement = Movement.new(movement_params)
-    # @movement = current_user.movements.new(group_movement_params)
-    # @movement.user_id = current_user.id
-    # @group_movement = @movement.group_movements.create(movement_params)
 
     respond_to do |format|
       if @movement.save
@@ -78,7 +75,6 @@ class MovementsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def movement_params
-    # params.require(:movement).permit(:name, :amount)
     params.require(:movement).permit(:name, :amount, group_ids: []).with_defaults(user_id: current_user.id)
   end
 end
