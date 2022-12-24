@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @movement %>
+
+<div class='d-flex justify-content-center gap-3 mb-2'>
+  <%= link_to "Back to movements", :back %>
+</div>
+
+<div class='position-relative container-fluid red_template text-white badge position-absolute bottom-0 start-50 translate-middle-x' style='height: 15%;'>
+  <%= button_to "Destroy this transaction", @group_movement, method: :delete, class: 'button_submit_form font_size_link_new link-light border position-absolute top-50 start-50 translate-middle py-4', style:'width: 90%;' %>
+</div>

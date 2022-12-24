@@ -1,0 +1,24 @@
+  
+  <article class=' row m-1 d-flex align-items-md-center'>
+
+    <div class='col-3 d-flex justify-content-center align-items-md-center '>
+      <div class='font_size_logo_groups' style='width: 85px; height: 85px;'>
+        <%= group.icon %>
+      </div>
+    </div>
+
+    <div class='col d-flex flex-column pt-3'>
+      <p class='row font_size_date_name_groups'>
+        <%= group.name %>
+      </p>
+      <p class='row font_size_date_name_groups pt-2'>
+        <%= group.created_at.strftime("%e %b %y") %>
+      </p>
+    </div>
+
+    <div class='col-3 d-flex justify-content-end pt-3 align-items-md-center '>
+        <p><strong><%= number_to_currency(group.movements.sum(:amount)) %></strong></p>
+    </div>
+
+  </article>
+

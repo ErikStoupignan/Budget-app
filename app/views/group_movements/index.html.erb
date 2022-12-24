@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Group movements</h1>
+
+<div id="group_movements">
+  <% @group_movements.each do |group_movement| %>
+    <%= render group_movement %>
+    <p>
+      <%= link_to "Show this group movement", group_movement %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New group movement", new_group_movement_path %>

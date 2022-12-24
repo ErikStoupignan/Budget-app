@@ -1,0 +1,34 @@
+<%= form_with(model: movement, url: [@group, movement]) do |form| %>
+
+  <% if movement.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(movement.errors.count, "error") %> prohibited this movement from being saved:</h2>
+
+      <ul>
+        <% movement.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='devise_login_register'>
+    <%= form.text_field :name, placeholder: 'Name' %>
+  </div>
+
+  <div class='devise_login_register'>
+    <%= form.text_field :amount, placeholder: 'Amount' %>
+  </div>
+
+  <div class=''>
+    <%= form.collection_check_boxes :group_ids, Group.where(user_id: current_user.id), :id, :name do |element| %>
+      <%= element.check_box + element.text %>
+    <% end %>
+  </div>
+  
+  <div class='position-relative container-fluid green_template text-white badge position-absolute bottom-0 start-50 translate-middle-x' style='height: 15%;'>
+    <%= form.submit 'Create transaction', class:'button_submit_form font_size_link_new link-light border position-absolute top-50 start-50 translate-middle py-4', style:'width: 90%;' %>
+  </div>
+
+
+<% end %>

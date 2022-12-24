@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @group_movement %>
+
+<div>
+  <%= link_to "Edit this group movement", edit_group_movement_path(@group_movement) %> |
+  <%= link_to "Back to group movements", group_movements_path %>
+
+  <%= button_to "Destroy this group movement", @group_movement, method: :delete %>
+</div>
